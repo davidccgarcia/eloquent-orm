@@ -10,6 +10,7 @@
                 <th>Email</th>
                 <th>Genero</th>
                 <th>Biografía</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>

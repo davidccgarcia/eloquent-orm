@@ -10,24 +10,45 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\User;
+use Faker\Factory as Faker;
 
 Route::get('/create-user', function () {
-    $user = App\User::create([
-        'name' => 'Cristhian García', 
-        'email' => 'ccristhiangarcia@gmail.com', 
+
+    $faker = Faker::create();
+
+    $user = User::create([
+        'name' => $faker->name,
+        'email' => $faker->email, 
         'password' => bcrypt('12345'),
-        'gender' => 'm', 
-        'biography' => 'Laravel y PHP developer'
+        'gender' => $faker->randomElement(['f', 'm']), 
+        'biography' => $faker->text(255)
     ]);
 
-    return view('welcome');
+    return $user;
 });
 
-Route::get('/update-user', function () {
-    $user = App\User::find(1);
-    $user->gender = 'm';
-    $user->biography = 'Laravel and PHP developer';
+Route::get('/read/{id}', function ($id) {
+    $user = User::find($id);
+    return $user;
+});
+
+Route::get('/update-user/{id}', function ($id) {
+
+    $faker = Faker::create();
+
+    $user = App\User::find($id);
+    $user->name = $faker->name;
+    $user->gender = $faker->randomElement(['f', 'm']);
+    $user->biography = $faker->text(255);
     $user->save();
 
-    return 'Usuario actualizado';
+    return $user;
+});
+
+Route::get('delete/{id}', function ($id) {
+    $user = User::find($id);
+    $user->delete();
+
+    return 'Usuario eliminado';
 });

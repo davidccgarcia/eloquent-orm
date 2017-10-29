@@ -12,7 +12,9 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'DESC')
+            ->take(10)
+            ->get();
 
         return view('pages.home', compact('users'));
     }

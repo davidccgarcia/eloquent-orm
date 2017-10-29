@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/create-user', function () {
+    $user = App\User::create([
+        'name' => 'Cristhian García', 
+        'email' => 'ccristhiangarcia@gmail.com', 
+        'password' => bcrypt('12345'),
+        'gender' => 'm', 
+        'biography' => 'Laravel y PHP developer'
+    ]);
+
     return view('welcome');
+});
+
+Route::get('/update-user', function () {
+    $user = App\User::find(1);
+    $user->gender = 'm';
+    $user->biography = 'Laravel and PHP developer';
+    $user->save();
+
+    return 'Usuario actualizado';
 });

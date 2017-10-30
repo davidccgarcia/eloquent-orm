@@ -9,5 +9,6 @@
     <li class="dropdown-header">Nav header</li>
     <li><a href="{{ route('lists') }}">Lista de usuarios en select (LISTS)</a></li>
     <li><a href="{{ route('first-last') }}">First Last</a></li>
+    <li><a href="{{ route('paginate') }}">Paginate Eloquent</a></li>
   </ul>
 </li>

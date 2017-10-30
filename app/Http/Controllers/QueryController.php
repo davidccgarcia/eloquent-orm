@@ -53,4 +53,13 @@ class QueryController extends Controller
 
         return view('query.lists', compact('title', 'users'));
     }
+
+    public function eloquentFirstLast()
+    {
+        $first = User::first();
+        $users = User::all();
+        $last = $users->last();
+
+        return view('query.first-last', compact('first', 'last'));
+    }
 }

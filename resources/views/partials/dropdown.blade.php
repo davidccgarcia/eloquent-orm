@@ -8,6 +8,6 @@
     <li role="separator" class="divider"></li>
     <li class="dropdown-header">Nav header</li>
     <li><a href="{{ route('lists') }}">Lista de usuarios en select (LISTS)</a></li>
-    <li><a href="#">One more separated link</a></li>
+    <li><a href="{{ route('first-last') }}">First Last</a></li>
   </ul>
 </li>
